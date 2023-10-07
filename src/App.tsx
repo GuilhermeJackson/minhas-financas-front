@@ -1,14 +1,12 @@
 import 'bootswatch/dist/flatly/bootstrap.css'
-import Login from './views/login'
+import AppRouter from './routes/appRoutes'
 
 function App() {
 
   return (
-    <>
-      <div>
-        <Login />
-      </div>
-    </>
+    <div>
+      <AppRouter />
+    </div>
   )
 }
 
