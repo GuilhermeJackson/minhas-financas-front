@@ -8,17 +8,16 @@ function Login() {
    const navigate = useNavigate();
    const [email, setEmail] = useState<string>('');
    const [senha, setSenha] = useState<string>('');
+   const [mensagemErro, setMensagemErro] = useState<string>();
 
-   const entrar = () => {
+   const entrar2 = () => {
       axios.post('http://localhost:8080/api/usuarios/autenticar', {
          email: email,
          senha: senha
       }).then(response => {
          console.log(response)
       }).catch(error => {
-         console.log("Email: " + email);
-         console.log("Senha: " + senha);
-         console.log("ERRO: " + error.reponse);
+         getErrorMessage({message: error.message})
       })
    }
 
@@ -52,7 +51,7 @@ function Login() {
                                     id="senha"
                                     placeholder="Password" />
                               </FormGroup>
-                              <button onClick={entrar} className="btn btn-success">
+                              <button onClick={entrar2} className="btn btn-success">
                                  <i className="pi pi-sign-in"></i>Entrar
                               </button>
                               <button onClick={prepararCadastrar} className="btn btn-danger">
