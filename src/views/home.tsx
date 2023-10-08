@@ -1,9 +1,18 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function Home() {
 
-    const [saldo] = useState<number>(1200);
+    const [saldo, setSaldo] = useState<number>();
 
+    useEffect(() => {
+        axios.get('http://localhost:8080/api/usuarios/1/saldo')
+            .then(reponse => {
+                setSaldo(reponse.data)
+            }).catch(error => {
+                getErrorMessage({ message: error.message });
+            })
+    }, []);
 
     return (
         <div className="jumbotron">
