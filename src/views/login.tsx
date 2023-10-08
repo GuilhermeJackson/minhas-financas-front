@@ -2,6 +2,7 @@ import { useState } from "react";
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
    const navigate = useNavigate();
@@ -9,8 +10,16 @@ function Login() {
    const [senha, setSenha] = useState<string>('');
 
    const entrar = () => {
-      console.log("Email: " + email);
-      console.log("Senha: " + senha);
+      axios.post('http://localhost:8080/api/usuarios/autenticar', {
+         email: email,
+         senha: senha
+      }).then(response => {
+         console.log(response)
+      }).catch(error => {
+         console.log("Email: " + email);
+         console.log("Senha: " + senha);
+         console.log("ERRO: " + error.reponse);
+      })
    }
 
    const prepararCadastrar = () => {

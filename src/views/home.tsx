@@ -1,12 +1,8 @@
 import { useState } from "react";
 
-interface HomeProps {
-    saldo: number;
-}
-
 function Home() {
 
-    const [saldo, setSaldo] = useState<number>();
+    const [saldo] = useState<number>(1200);
 
 
     return (
