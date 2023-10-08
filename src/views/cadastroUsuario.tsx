@@ -16,7 +16,7 @@ function CadastroUsuario() {
     }
 
     return (
-        <div className="container">
+        <div>
 
             <div className="card mb-3">
                 <h3 className="card-header">Cadastro de Usuário</h3>
