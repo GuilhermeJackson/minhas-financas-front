@@ -1,8 +1,9 @@
 import { useState } from "react"
 import FormGroup from "../components/form-group";
+import { useNavigate } from "react-router-dom";
 
 function CadastroUsuario() {
-
+    const navigate = useNavigate();
     const [nome, setNome] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [senha, setSenha] = useState<string>('');
@@ -13,6 +14,10 @@ function CadastroUsuario() {
         console.log(email)
         console.log(senha)
         console.log(senhaRepeticao)
+    }
+
+    const cancelar = () => {
+        navigate('/login')
     }
 
     return (
@@ -58,7 +63,7 @@ function CadastroUsuario() {
                                 </FormGroup>
 
                                 <button onClick={cadastrar} type="button" className="btn btn-success">Salvar</button>
-                                <button type="button" className="btn btn-danger">Voltar</button>
+                                <button onClick={cancelar} type="button" className="btn btn-danger">Cancelar</button>
                             </div>
                         </div>
                     </div>

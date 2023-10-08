@@ -1,15 +1,20 @@
 import { useState } from "react";
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-
+   const navigate = useNavigate();
    const [email, setEmail] = useState<string>('');
    const [senha, setSenha] = useState<string>('');
 
    const entrar = () => {
       console.log("Email: " + email);
       console.log("Senha: " + senha);
+   }
+
+   const prepararCadastrar = () => {
+      navigate('/cadastro-usuarios');
    }
 
    return (
@@ -41,8 +46,8 @@ function Login() {
                               <button onClick={entrar} className="btn btn-success">
                                  <i className="pi pi-sign-in"></i>Entrar
                               </button>
-                              <button className="btn btn-danger">
-                                 <i className="pi pi-plus"></i> Cadastrar
+                              <button onClick={prepararCadastrar} className="btn btn-danger">
+                                 <i className="pi pi-plus" ></i> Cadastrar
                               </button>
                            </fieldset>
                         </div>
