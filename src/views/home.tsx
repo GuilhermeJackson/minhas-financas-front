@@ -1,18 +1,21 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import UsuarioService from "../app/service/usuarioService";
+import LocalStorageService from "../app/service/localstorageService";
+
 
 function Home() {
-
+    const localStorageService = new LocalStorageService();
+    const usuarioService = UsuarioService();
     const [saldo, setSaldo] = useState<number>();
 
     useEffect(() => {
-        const usuarioLogadoString = localStorage.getItem('_usuario_logado');
+        const usuarioLogadoString = localStorageService.obterItem('_usuario_logado');
         if (usuarioLogadoString != null) {
             const usuarioLogado: UsuarioLogado = JSON.parse(usuarioLogadoString);
-
-            axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}/saldo`)
-                .then(reponse => {
-                    setSaldo(reponse.data)
+            usuarioService.obterSaldoPorUsuario(usuarioLogado.id)
+                .then((response) => {
+                    if (typeof response.data === 'number')
+                        setSaldo(response.data);
                 }).catch(error => {
                     getErrorMessage({ message: error.message });
                 })
