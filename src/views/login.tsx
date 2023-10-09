@@ -4,6 +4,7 @@ import FormGroup from "../components/form-group";
 import { useNavigate } from "react-router-dom";
 import UsuarioService from "../app/service/usuarioService";
 import LocalStorageService from "../app/service/localstorageService";
+import { mensagemErro } from '../components/toastr';
 
 function Login() {
    const usuarioService = UsuarioService()
@@ -22,7 +23,7 @@ function Login() {
             localStorage.adicionarItem('_usuario_logado', JSON.stringify(response.data));
             navigate('/home');
          }).catch(error => {
-            getErrorMessage({ message: error.message });
+            mensagemErro( error.message );
          })
    }
 
