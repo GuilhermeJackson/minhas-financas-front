@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import UsuarioService from "../app/service/usuarioService";
 import LocalStorageService from "../app/service/localstorageService";
 import { mensagemErro } from '../components/toastr';
+import { IUsuarioLogin } from "../model/interfaces/usuario.model";
 
 function Login() {
    const usuarioService = UsuarioService()
@@ -14,7 +15,7 @@ function Login() {
    const [senha, setSenha] = useState<string>('');
 
    const entrar = async () => {
-      const credencial: UsuarioLogin = {
+      const credencial: IUsuarioLogin = {
          email: email,
          senha: senha
       }

@@ -1,8 +1,13 @@
 import { useState } from "react"
 import FormGroup from "../components/form-group";
 import { useNavigate } from "react-router-dom";
+import UsuarioService from "../app/service/usuarioService";
+import { mensagemErro } from '../components/toastr';
+import { mensagemSucesso } from '../components/toastr';
+import { IUsuarioCadastro } from "../model/interfaces/usuario.model";
 
 function CadastroUsuario() {
+    const usuarioService = UsuarioService()
     const navigate = useNavigate();
     const [nome, setNome] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -10,10 +15,18 @@ function CadastroUsuario() {
     const [senhaRepeticao, setSenhaRepeticao] = useState<string>('');
 
     const cadastrar = () => {
-        console.log(nome)
-        console.log(email)
-        console.log(senha)
-        console.log(senhaRepeticao)
+        const usuario: IUsuarioCadastro = {
+            nome: nome,
+            email: email,
+            senha: senha
+        }
+        usuarioService.salvar(usuario)
+            .then(response => {
+                mensagemSucesso("Usuário cadastrado com sucesso!");
+                navigate('/login')
+            }).catch(erro => {
+                mensagemErro(erro.response.data)
+            })
     }
 
     const cancelar = () => {

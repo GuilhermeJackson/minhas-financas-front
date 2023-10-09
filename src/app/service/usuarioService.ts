@@ -1,11 +1,12 @@
 import { useCallback } from 'react';
 import createApiService from '../apiservice';
+import { IUsuarioLogin } from '../../model/interfaces/usuario.model';
 
 
 const useUsuarioService = () => {
     const apiService = createApiService('/api/usuarios');
 
-  const autenticar = useCallback((credenciais: UsuarioLogin) => {
+  const autenticar = useCallback((credenciais: IUsuarioLogin) => {
     return apiService.post('/autenticar', credenciais);
   }, [apiService]);
 
