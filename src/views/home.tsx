@@ -6,12 +6,17 @@ function Home() {
     const [saldo, setSaldo] = useState<number>();
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/usuarios/1/saldo')
-            .then(reponse => {
-                setSaldo(reponse.data)
-            }).catch(error => {
-                getErrorMessage({ message: error.message });
-            })
+        const usuarioLogadoString = localStorage.getItem('_usuario_logado');
+        if (usuarioLogadoString != null) {
+            const usuarioLogado: UsuarioLogado = JSON.parse(usuarioLogadoString);
+
+            axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}/saldo`)
+                .then(reponse => {
+                    setSaldo(reponse.data)
+                }).catch(error => {
+                    getErrorMessage({ message: error.message });
+                })
+        }
     }, []);
 
     return (
