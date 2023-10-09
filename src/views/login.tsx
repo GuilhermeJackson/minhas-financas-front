@@ -2,23 +2,28 @@ import { useState } from "react";
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import UsuarioService from "../app/service/usuarioService";
 
 function Login() {
+
+   const usuarioService = UsuarioService()
+
    const navigate = useNavigate();
    const [email, setEmail] = useState<string>('');
    const [senha, setSenha] = useState<string>('');
 
    const entrar = async () => {
-      await axios.post('http://localhost:8080/api/usuarios/autenticar', {
+      const credencial: UsuarioLogin = {
          email: email,
          senha: senha
-      }).then(response => {
-         localStorage.setItem('_usuario_logado', JSON.stringify(response.data));
-         navigate('/home');
-      }).catch(error => {
-         getErrorMessage({ message: error.message });
-      })
+      }
+      await usuarioService.autenticar(credencial)
+         .then(response => {
+            localStorage.setItem('_usuario_logado', JSON.stringify(response.data));
+            navigate('/home');
+         }).catch(error => {
+            getErrorMessage({ message: error.message });
+         })
    }
 
    const prepararCadastrar = () => {
