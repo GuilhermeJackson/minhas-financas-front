@@ -15,6 +15,9 @@ function CadastroUsuario() {
     const [senhaRepeticao, setSenhaRepeticao] = useState<string>('');
 
     const cadastrar = () => {
+        if (exibirMensagemErroDosCampos() === false) {
+            return;
+        }
         const usuario: IUsuarioCadastro = {
             nome: nome,
             email: email,
@@ -31,6 +34,40 @@ function CadastroUsuario() {
 
     const cancelar = () => {
         navigate('/login')
+    }
+
+    const exibirMensagemErroDosCampos = () => {
+        const msg = validar();
+        if (msg && msg.length > 0) {
+            msg.forEach((msg) => {
+                mensagemErro(msg);
+            });
+            return false;
+        }
+    };
+
+    const validar: () => string[] = () => {
+        const msgs = []
+        if (!nome) {
+            msgs.push('O campo nome é obrigatório')
+        }
+        if (!email) {
+            msgs.push('O campo e-mail é obrigatório')
+        }
+        if (email.match('/^[a-z0-9.]+@[a-z0-9]+\.[a-z]/')) {
+            msgs.push('Informa um e-mail válido')
+        }
+        if (!senha) {
+            msgs.push('O campo senha é obrigatório')
+        }
+        if (senha && !senhaRepeticao) {
+            msgs.push('É necessário repetir a senha')
+        }
+
+        if ((senha && senhaRepeticao) && senha !== senhaRepeticao) {
+            msgs.push('Confirmação de senha incorreta!')
+        }
+        return msgs;
     }
 
     return (
