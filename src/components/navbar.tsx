@@ -1,4 +1,4 @@
-import NavbarItem from './navbarItem';
+import NavbarItem from './navbar-item';
 
 interface NavbarProps {
     isUsuarioAutenticado: boolean;

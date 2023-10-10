@@ -3,7 +3,7 @@ import createApiService from '../apiservice';
 import { IUsuarioLogin } from '../../model/interfaces/usuario.model';
 
 
-const useUsuarioService = () => {
+const UsuarioService = () => {
     const apiService = createApiService('/api/usuarios');
 
   const autenticar = useCallback((credenciais: IUsuarioLogin) => {
@@ -52,4 +52,4 @@ const useUsuarioService = () => {
   };
 };
 
-export default useUsuarioService;
+export default UsuarioService;

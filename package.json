@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/currency-formatter": "^1.5.2",
     "@types/react-toastr": "^3.0.6",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.1",
     "bootswatch": "^5.3.1",
+    "currency-formatter": "^1.5.9",
+    "primeicons": "^6.0.1",
+    "primereact": "^10.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",

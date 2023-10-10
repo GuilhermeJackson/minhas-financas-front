@@ -7,7 +7,7 @@ export const httpClient = axios.create({
 //   withCredentials: true,
 });
 
-const createApiService = (apiurl: string) => {
+const ApiService = (apiurl: string) => {
 //   const registrarToken = (token: string | null) => {
 //     if (token) {
 //       httpClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -43,4 +43,4 @@ const createApiService = (apiurl: string) => {
   };
 };
 
-export default createApiService;
+export default ApiService;
