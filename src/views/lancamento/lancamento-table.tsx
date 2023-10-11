@@ -39,7 +39,7 @@ const LancamentosTable = (props: LancamentosTableProps) => {
                         type="button"
                         title="Editar"
                         className="btn btn-primary"
-                        // onClick={() => props.editAction(lancamento.id)}
+                        onClick={() => props.editAction(lancamento.id)}
                     >
                         <i className="pi pi-pencil"></i>
                     </button>

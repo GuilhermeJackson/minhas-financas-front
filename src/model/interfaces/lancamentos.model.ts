@@ -1,10 +1,10 @@
 interface ILancamento {
     id: number;
-    descricao: String;
+    descricao: string;
     valor: number;
-    tipo: String;
-    mes: String;
-    status: String;
+    tipo: string;
+    mes: string;
+    status: string;
 }
 
 interface ILancamentoCadastro {
@@ -17,11 +17,13 @@ interface ILancamentoCadastro {
     status?: string
 }
 
-interface ILancamentoAtualizado {
+interface ILancamentoEditar {
     id?: number;
-    descricao?: String;
+    descricao?: string;
     valor?: number;
-    tipo?: String;
-    mes?: String;
-    ano?: String
+    tipo?: string;
+    mes?: string;
+    ano?: string
+    status?: string
+    usuario_id?: string
 }

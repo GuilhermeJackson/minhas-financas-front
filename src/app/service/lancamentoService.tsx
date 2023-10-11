@@ -109,7 +109,9 @@ const LancamentoService = () => {
         obterListaMeses,
         deletar,
         validar,
-        salvar
+        salvar,
+        obterPorId,
+        atualizar
     }
 }
 
