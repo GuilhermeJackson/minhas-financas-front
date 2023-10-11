@@ -63,7 +63,7 @@ const LancamentoService = () => {
     }
 
     const salvar = (lancamento: any) => {
-        return apiService.post('/', lancamento);
+        return apiService.post('', lancamento);
     }
 
     const atualizar = (lancamento: any) => {
@@ -107,7 +107,9 @@ const LancamentoService = () => {
         alterarStatus,
         obterListaTipos,
         obterListaMeses,
-        deletar
+        deletar,
+        validar,
+        salvar
     }
 }
 

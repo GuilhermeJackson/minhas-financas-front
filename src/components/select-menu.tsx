@@ -6,18 +6,19 @@ interface Option {
 }
 
 interface SelectMenuProps<Value> {
+  name?: string;
   value?: Value;
   onChange?: (newValue: Value) => void;
   className?: string;
   id?: string;
-  lista: Option[];
+  lista?: Option[];
   children?: ReactNode;
 }
 
 const SelectMenu = (props: SelectMenuProps<any>) => {
   const { lista, ...restProps } = props;
 
-  const options = lista.map((option, index) => {
+  const options = lista?.map((option, index) => {
     return (
       <option key={index} value={option.value}>
         {option.label}
@@ -29,7 +30,7 @@ const SelectMenu = (props: SelectMenuProps<any>) => {
     <select 
     className={props.className}
     onChange={props.onChange}
-    id={props.id} value={props.value} {...restProps} >
+    id={props.id} value={props.value} name={props.name} {...restProps} >
       {options}
     </select>
   );

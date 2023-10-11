@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UsuarioService from "../app/service/usuarioService";
 import LocalStorageService from "../app/service/localstorageService";
+import { IUsuarioLogado } from "../model/interfaces/usuario.model";
 
 
 function Home() {
@@ -11,8 +12,9 @@ function Home() {
     useEffect(() => {
         const usuarioLogadoString = localStorageService.obterItem('_usuario_logado');
         if (usuarioLogadoString != null) {
-            const usuarioLogado: UsuarioLogado = JSON.parse(usuarioLogadoString);
-            usuarioService.obterSaldoPorUsuario(usuarioLogado.id)
+            const usuarioLogado: IUsuarioLogado = JSON.parse(usuarioLogadoString);
+            const idNumber = +usuarioLogado.id;
+            usuarioService.obterSaldoPorUsuario(idNumber)
                 .then((response) => {
                     if (typeof response.data === 'number')
                         setSaldo(response.data);

@@ -4,9 +4,9 @@ export interface IUsuarioLogin {
 }
 
 export interface IUsuarioLogado {
-    id: String
-    nome: String
-    email: String
+    id: string
+    nome: string
+    email: string
 }
 
 export interface IUsuarioCadastro {
