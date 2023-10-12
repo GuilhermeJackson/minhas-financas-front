@@ -14,6 +14,7 @@ function AppRouter() {
                 <Route path="/cadastro-usuarios" element={<CadastroUsuario />} />
                 <Route path="/consulta-lancamentos" element={<ConsultaLancamentos />} />
                 <Route path="/cadastro-lancamentos/:id" element={<CadastroLancamento />} />
+                <Route path="/cadastro-lancamentos" element={<CadastroLancamento />} />
             </Routes>
         </Router>
     )
