@@ -24,7 +24,7 @@ const LancamentosTable = (props: LancamentosTableProps) => {
                         onClick={() => props.alterarStatus(lancamento, 'EFETIVADO')}
                         type="button"
                     >
-                        <i className="pi pi-check"></i>
+                        <i className="pi pi-check">Efetivado</i>
                     </button>
                     <button
                         className="btn btn-warning"
@@ -33,7 +33,7 @@ const LancamentosTable = (props: LancamentosTableProps) => {
                         onClick={() => props.alterarStatus(lancamento, 'CANCELADO')}
                         type="button"
                     >
-                        <i className="pi pi-times"></i>
+                        <i className="pi pi-times">Cancelado</i>
                     </button>
                     <button
                         type="button"
@@ -41,7 +41,7 @@ const LancamentosTable = (props: LancamentosTableProps) => {
                         className="btn btn-primary"
                         onClick={() => props.editAction(lancamento.id)}
                     >
-                        <i className="pi pi-pencil"></i>
+                        <i className="pi pi-pencil">Editar</i>
                     </button>
                     <button
                         type="button"
@@ -49,7 +49,7 @@ const LancamentosTable = (props: LancamentosTableProps) => {
                         className="btn btn-danger"
                         onClick={() => props.deleteAction(lancamento)}
                     >
-                        <i className="pi pi-trash"></i>
+                        <i className="pi pi-trash">Deletar</i>
                     </button>
                 </td>
             </tr>
