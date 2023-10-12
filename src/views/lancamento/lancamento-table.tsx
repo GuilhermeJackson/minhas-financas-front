@@ -2,7 +2,7 @@ import currencyFormatter from 'currency-formatter';
 
 interface LancamentosTableProps {
     lancamentos: ILancamento[];
-    alterarStatus?: (lancamento: ILancamento, novoStatus: string) => void;
+    alterarStatus: (lancamento: ILancamento, novoStatus: string) => void;
     editAction: (id?: number) => void;
     deleteAction: (lancamento: ILancamento) => void;
 }
@@ -21,7 +21,7 @@ const LancamentosTable = (props: LancamentosTableProps) => {
                         className="btn btn-success"
                         title="Efetivar"
                         disabled={lancamento.status !== 'PENDENTE'}
-                        // onClick={() => props.alterarStatus(lancamento, 'EFETIVADO')}
+                        onClick={() => props.alterarStatus(lancamento, 'EFETIVADO')}
                         type="button"
                     >
                         <i className="pi pi-check"></i>
@@ -30,7 +30,7 @@ const LancamentosTable = (props: LancamentosTableProps) => {
                         className="btn btn-warning"
                         title="Cancelar"
                         disabled={lancamento.status !== 'PENDENTE'}
-                        // onClick={() => props.alterarStatus(lancamento, 'CANCELADO')}
+                        onClick={() => props.alterarStatus(lancamento, 'CANCELADO')}
                         type="button"
                     >
                         <i className="pi pi-times"></i>

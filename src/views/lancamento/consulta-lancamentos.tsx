@@ -82,7 +82,7 @@ function ConsultaLancamentos() {
         if (lancamentoDeletar)
             lancamentoService
                 .deletar(lancamentoDeletar.id)
-                .then((response) => {
+                .then(() => {
                     const updatedLancamentos = lancamentos.filter(
                         (lancamento) => lancamento.id !== lancamentoDeletar.id
                     );
@@ -101,10 +101,10 @@ function ConsultaLancamentos() {
         navigate('/cadastro-lancamentos');
     };
 
-    const alterarStatus = (lancamento: ILancamento, status: String) => {
+    const alterarStatus = (lancamento: ILancamento, status: string) => {
         lancamentoService
             .alterarStatus(lancamento.id, status)
-            .then((response) => {
+            .then(() => {
                 const index = lancamentos.findIndex((item) => item.id === lancamento.id);
                 if (index !== -1) {
                     const updatedLancamentos = [...lancamentos];

@@ -30,7 +30,7 @@ const LancamentoService = () => {
         return apiService.get(`/${id}`);
     }
 
-    const alterarStatus = (id?: number, status?: String) => {
+    const alterarStatus = (id?: number, status?: string) => {
         return apiService.put(`/${id}/atualiza-status`, { status });
     }
 
@@ -95,8 +95,6 @@ const LancamentoService = () => {
 
         return apiService.get(params);
     }
-
-    // Retorna um objeto com as funções que você deseja acessar externamente
 
     const deletar = (id: number) => {
         return apiService.delete(`/${id}`);
