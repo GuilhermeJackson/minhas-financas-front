@@ -303,3 +303,8 @@ pre {
         text-align: center
     }
 }
+
+.btn {
+    margin-inline: 5px;
+    margin-block: 5px;
+}

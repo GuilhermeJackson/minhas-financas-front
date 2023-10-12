@@ -4,6 +4,7 @@ import Navbar from './components/navbar'
 
 //theme
 import "primereact/resources/themes/lara-light-indigo/theme.css";
+import '../node_modules/primeicons/primeicons.css';
 import 'toastr/build/toastr.css'
 
 function App() {
