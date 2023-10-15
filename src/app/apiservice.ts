@@ -4,15 +4,23 @@ const baseURL = "http://localhost:8080";
 
 export const httpClient = axios.create({
   baseURL: baseURL,
-//   withCredentials: true,
+  withCredentials: true,
 });
 
-const ApiService = (apiurl: string) => {
-//   const registrarToken = (token: string | null) => {
-//     if (token) {
-//       httpClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-//     }
-//   };
+type ApiServiceType = {
+  registrarToken: (token: string) => void;
+  post: <T>(url: string, objeto: any) => Promise<AxiosResponse<T>>;
+  put: <T>(url: string, objeto: any) => Promise<AxiosResponse<T>>;
+  delete: <T>(url: string) => Promise<AxiosResponse<T>>;
+  get: <T>(url: string, config?: AxiosRequestConfig) => Promise<AxiosResponse<T>>;
+};
+
+const ApiService = (apiurl: string): ApiServiceType => {
+  const registrarToken = (token: string) => {
+    if (token) {
+      httpClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+  };
 
   const post = <T>(url: string, objeto: any): Promise<AxiosResponse<T>> => {
     const requestUrl = `${apiurl}${url}`;
@@ -35,7 +43,7 @@ const ApiService = (apiurl: string) => {
   };
 
   return {
-    // registrarToken,
+    registrarToken,
     post,
     put,
     delete: _delete,
