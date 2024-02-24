@@ -4,7 +4,7 @@ import { IUsuarioLogin } from '../../model/interfaces/usuario.model';
 
 
 const UsuarioService = () => {
-    const apiService = createApiService('/api/usuarios');
+  const apiService = createApiService('/api/usuarios');
 
   const autenticar = useCallback((credenciais: IUsuarioLogin) => {
     return apiService.post('/autenticar', credenciais);
@@ -37,10 +37,6 @@ const UsuarioService = () => {
       erros.push('As senhas não batem.');
     }
 
-    // Se você deseja lançar exceções, ajuste essa parte do código
-    // throw new ErroValidacao(erros);
-
-    // Retorne os erros ou qualquer outro resultado necessário
     return erros;
   }, []);
 
