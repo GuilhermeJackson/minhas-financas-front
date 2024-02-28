@@ -1,7 +1,13 @@
+import AuthService from '../app/service/authService';
 import NavbarItem from './navbar-item';
 
 interface NavbarProps {
     isUsuarioAutenticado: boolean;
+}
+let authService = AuthService()
+
+const deslogar = () => {
+    authService.removerUsuariouAutenticado();
 }
 
 function Navbar(props: NavbarProps) {
@@ -20,7 +26,7 @@ function Navbar(props: NavbarProps) {
                         <NavbarItem render={props.isUsuarioAutenticado} href="/home" label="Home" />
                         <NavbarItem render={props.isUsuarioAutenticado} href="/cadastro-usuarios" label="Usuários" />
                         <NavbarItem render={props.isUsuarioAutenticado} href="/consulta-lancamentos" label="Lançamentos" />
-                        <NavbarItem render={props.isUsuarioAutenticado} href="/login" label="Sair" />
+                        <NavbarItem onClick={deslogar} render={props.isUsuarioAutenticado} href="/login" label="Sair" />
                     </ul>
                 </div>
             </div>

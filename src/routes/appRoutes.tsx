@@ -3,17 +3,14 @@ import Login from '../views/login';
 import CadastroUsuario from '../views/cadastroUsuario';
 import ConsultaLancamentos from '../views/lancamento/consulta-lancamentos'
 import Home from '../views/home';
-import CadastroLancamento from '../views/lancamento/cadastro-lancamentos';
+import AuthService from '../app/service/authService';
 
 function AppRouter() {
 
-    const isUsuarioAutenticado = () => {
-
-        return false
-    }
+    const authService = AuthService();
 
     function RotaAutenticadaCadastroUsuario() { // TODO otimizar o código
-        if (isUsuarioAutenticado()) {
+        if (authService.isUsuarioLogado()) {
             console.log("USUARIO AUTENTICADO DEVE LEVAR PARA PÁGINA CORRETA");
             return <CadastroUsuario />
         } else {
@@ -23,7 +20,7 @@ function AppRouter() {
     }
 
     function RotaAutenticadaConsultaLancamentos() {
-        if (isUsuarioAutenticado()) {
+        if (authService.isUsuarioLogado()) {
             console.log("USUARIO AUTENTICADO DEVE LEVAR PARA PÁGINA CORRETA");
             return <ConsultaLancamentos />
         } else {
@@ -32,9 +29,9 @@ function AppRouter() {
         }
     }
 
-    
+
     function RotaAutenticadaCadastroLancamento() {
-        if (isUsuarioAutenticado()) {
+        if (authService.isUsuarioLogado()) {
             console.log("USUARIO AUTENTICADO DEVE LEVAR PARA PÁGINA CORRETA");
             return <ConsultaLancamentos />
         } else {
@@ -44,7 +41,7 @@ function AppRouter() {
     }
 
     function RotaAutenticadaCadastroLancamentoID() {
-        if (isUsuarioAutenticado()) {
+        if (authService.isUsuarioLogado()) {
             console.log("USUARIO AUTENTICADO DEVE LEVAR PARA PÁGINA CORRETA");
             return <ConsultaLancamentos />
         } else {
