@@ -6,16 +6,26 @@ export const AuthService = () => {
 
     function isUsuarioLogado() {
         const usuario: any = localStorage.obterItem(USUARIO_LOGADO); //TODO verificar tipagem de usuario logado
-        console.log("ENTRO NA VERIFICAÇÃO DO USUARIO", usuario)
-        return usuario; 
+        if(usuario)
+        return usuario;
     }
 
     function removerUsuariouAutenticado() {
         localStorage.removerItem(USUARIO_LOGADO)
     }
+
+    function logar(usuario: any) {
+        localStorage.adicionarItem(USUARIO_LOGADO, JSON.stringify(usuario))
+    }
+
+    function obterUsuarioAutenticado() {
+        return localStorage.obterItem(USUARIO_LOGADO)
+    }
     return {
         isUsuarioLogado,
-        removerUsuariouAutenticado
+        removerUsuariouAutenticado,
+        logar,
+        obterUsuarioAutenticado
     }
 };
 

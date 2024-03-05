@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UsuarioService from "../app/service/usuarioService";
-import LocalStorageService from "../app/service/localstorageService";
 import { IUsuarioLogado } from "../model/interfaces/usuario.model";
-
+import { AuthContext } from "../provedorAutenticacao";
 
 function Home() {
-    const localStorageService = new LocalStorageService();
     const usuarioService = UsuarioService();
     const [saldo, setSaldo] = useState<number>();
+    const { usuarioAutenticado } = useContext(AuthContext as React.Context<any>);
 
     useEffect(() => {
-        const usuarioLogadoString = localStorageService.obterItem('_usuario_logado');
+        const usuarioLogadoString = usuarioAutenticado;
         if (usuarioLogadoString != null) {
-            const usuarioLogado: IUsuarioLogado = JSON.parse(usuarioLogadoString);
+            const usuarioLogado: IUsuarioLogado = usuarioLogadoString;
             const idNumber = +usuarioLogado.id;
             usuarioService.obterSaldoPorUsuario(idNumber)
                 .then((response) => {

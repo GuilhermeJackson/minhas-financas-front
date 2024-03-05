@@ -6,16 +6,17 @@ import Navbar from './components/navbar'
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import '../node_modules/primeicons/primeicons.css';
 import 'toastr/build/toastr.css'
+import { ProvedorAutenticacao } from './provedorAutenticacao';
 
 function App() {
 
   return (
-    <>
+    <ProvedorAutenticacao>
       <Navbar isUsuarioAutenticado={true} />
       <div className='container'>
         <AppRouter />
       </div>
-    </>
+    </ProvedorAutenticacao>
   )
 }
 

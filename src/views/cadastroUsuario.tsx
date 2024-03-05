@@ -24,7 +24,7 @@ function CadastroUsuario() {
             senha: senha
         }
         usuarioService.salvar(usuario)
-            .then(response => {
+            .then(() => {
                 mensagemSucesso("Usuário cadastrado com sucesso!");
                 navigate('/login')
             }).catch(erro => {

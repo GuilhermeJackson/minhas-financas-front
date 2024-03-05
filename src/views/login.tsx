@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
 import { useNavigate } from "react-router-dom";
 import UsuarioService from "../app/service/usuarioService";
-import LocalStorageService from "../app/service/localstorageService";
 import { mensagemErro } from '../components/toastr';
 import { IUsuarioLogin } from "../model/interfaces/usuario.model";
+import { AuthContext } from '../provedorAutenticacao';
+
 
 function Login() {
    const usuarioService = UsuarioService()
-   const localStorage = new LocalStorageService();
    const navigate = useNavigate();
    const [email, setEmail] = useState<string>('');
    const [senha, setSenha] = useState<string>('');
+   const { iniciarSessao } = useContext(AuthContext as React.Context<any>);
 
    const entrar = async () => {
       const credencial: IUsuarioLogin = {
@@ -21,10 +22,11 @@ function Login() {
       }
       await usuarioService.autenticar(credencial)
          .then(response => {
-            localStorage.adicionarItem('_usuario_logado', JSON.stringify(response.data));
+            iniciarSessao(response.data);
             navigate('/home');
          }).catch(error => {
-            mensagemErro( error.message );
+            mensagemErro(error.message);
+            console.log(error);
          })
    }
 
