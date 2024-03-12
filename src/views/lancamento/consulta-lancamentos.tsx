@@ -68,7 +68,6 @@ function ConsultaLancamentos() {
 
     const abrirConfirmacao = (lancamento: ILancamento) => {
         setLancamentoDeletar(lancamento);
-        console.log("ABRIR CONFIRMA^ÇÂO: " + lancamento.id);
         setShowConfirmDialog(true);
     };
 

@@ -10,7 +10,7 @@ const UsuarioService = () => {
     return apiService.post('/autenticar', credenciais);
   }, [apiService]);
 
-  const obterSaldoPorUsuario = useCallback((id: number) => {
+  const obterSaldoPorUsuario = useCallback((id: number) => {  // TODO corrigir id undefined ao consultar saldo e atualizar a página
     return apiService.get(`/${id}/saldo`);
   }, [apiService]);
 

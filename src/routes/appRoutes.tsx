@@ -3,49 +3,42 @@ import Login from '../views/login';
 import CadastroUsuario from '../views/cadastroUsuario';
 import ConsultaLancamentos from '../views/lancamento/consulta-lancamentos'
 import Home from '../views/home';
-import AuthService from '../app/service/authService';
+import { useContext } from 'react';
+import { AuthContext } from '../provedorAutenticacao';
+import CadastroLancamento from '../views/lancamento/cadastro-lancamentos';
 
 function AppRouter() {
-
-    const authService = AuthService();
+    const { isAutenticado } = useContext(AuthContext as React.Context<any>);
 
     function RotaAutenticadaCadastroUsuario() { // TODO otimizar o código
-        if (authService.isUsuarioLogado()) {
-            console.log("USUARIO AUTENTICADO DEVE LEVAR PARA PÁGINA CORRETA");
+        if (isAutenticado) {
             return <CadastroUsuario />
         } else {
-            console.log("USUARIO DESLOGADO DEVE LEVAR PARA TELA DE LOGIN");
             return <Navigate to="/login" />
         }
     }
 
     function RotaAutenticadaConsultaLancamentos() {
-        if (authService.isUsuarioLogado()) {
-            console.log("USUARIO AUTENTICADO DEVE LEVAR PARA PÁGINA CORRETA");
+        if (isAutenticado) {
             return <ConsultaLancamentos />
         } else {
-            console.log("USUARIO DESLOGADO DEVE LEVAR PARA TELA DE LOGIN");
             return <Navigate to="/login" />
         }
     }
 
 
     function RotaAutenticadaCadastroLancamento() {
-        if (authService.isUsuarioLogado()) {
-            console.log("USUARIO AUTENTICADO DEVE LEVAR PARA PÁGINA CORRETA");
-            return <ConsultaLancamentos />
+        if (isAutenticado) {
+            return <CadastroLancamento />
         } else {
-            console.log("USUARIO DESLOGADO DEVE LEVAR PARA TELA DE LOGIN");
             return <Navigate to="/login" />
         }
     }
 
     function RotaAutenticadaCadastroLancamentoID() {
-        if (authService.isUsuarioLogado()) {
-            console.log("USUARIO AUTENTICADO DEVE LEVAR PARA PÁGINA CORRETA");
-            return <ConsultaLancamentos />
+        if (isAutenticado) {
+            return <CadastroLancamento />
         } else {
-            console.log("USUARIO DESLOGADO DEVE LEVAR PARA TELA DE LOGIN");
             return <Navigate to="/login" />
         }
     }

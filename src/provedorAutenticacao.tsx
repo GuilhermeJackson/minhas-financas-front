@@ -6,26 +6,25 @@ interface AuthContextProps {
     isAutenticado: boolean;
     iniciarSessao: (usuario: any) => void;
     encerraSessao: () => void;
-  }
+}
 
 interface AuthProviderProps {
     children: any;
 }
 
-const AuthContext = createContext<AuthContextProps | undefined>(undefined);
+const AuthContext = createContext<AuthContextProps | null>(null);
 const AuthConsumer = AuthContext.Consumer;
 const AuthProvider = AuthContext.Provider
 
 function ProvedorAutenticacao({ children }: AuthProviderProps) {
     let authService = AuthService();
     const [usuarioAutenticado, setUsuarioAutenticado] = useState<any>('');
-    const [isAutenticado, setIsAutenticado] = useState<boolean>(false);
+    const [isAutenticado, setIsAutenticado] = useState<boolean>(true);
 
     function iniciarSessao(usuario: any) {
-        console.log("TESTE")
         authService.logar(usuario);
         setUsuarioAutenticado(usuario)
-        setIsAutenticado(true)
+        setIsAutenticado(true);
     }
 
     function encerraSessao() {
@@ -48,4 +47,4 @@ function ProvedorAutenticacao({ children }: AuthProviderProps) {
     );
 }
 
-export {AuthContext, AuthProvider, AuthConsumer, ProvedorAutenticacao};
+export { AuthContext, AuthProvider, AuthConsumer, ProvedorAutenticacao };
